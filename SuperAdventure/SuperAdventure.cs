@@ -54,28 +54,12 @@ namespace SuperAdventure
         private void MoveTo(Location newLocation)
         {
             //Does the location have any required items
-            if (newLocation.ItemRequiredToEnter != null)
-            {
-                // See if the player has the required item in their inventory
-                bool playerHasRequiredItem = false;
 
-                foreach (InventoryItem ii in _player.Inventory)
+            if (!_player.HasRequiredItemToEnterThisLocation(newLocation))
                 {
-                    if (ii.Details.ID == newLocation.ItemRequiredToEnter.ID)
-                    {
-                        // We found the required item
-                        playerHasRequiredItem = true;
-                        break; // Exit out of the foreach loop
-                    }
-                }
-
-                if (!playerHasRequiredItem)
-                {
-                    // We didn't find the required item in their inventory, so display a message and stop trying to move
                     rtbMessages.Text += "You must have a " + newLocation.ItemRequiredToEnter.Name + " to enter this location." + Environment.NewLine;
                     return;
                 }
-            }
 
             // Update the player's current location
             _player.CurrentLocation = newLocation;
