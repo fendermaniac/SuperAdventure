@@ -39,16 +39,16 @@ namespace SuperAdventure
             this.lblExperience = new System.Windows.Forms.Label();
             this.lblLevel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cboWeapons = new System.Windows.Forms.ComboBox();
+            this.cboPotions = new System.Windows.Forms.ComboBox();
             this.btnNorth = new System.Windows.Forms.Button();
             this.btnWest = new System.Windows.Forms.Button();
             this.btnEast = new System.Windows.Forms.Button();
             this.btnSouth = new System.Windows.Forms.Button();
             this.btnUseWeapon = new System.Windows.Forms.Button();
             this.btnUsePotion = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.rtbLocation = new System.Windows.Forms.RichTextBox();
+            this.rtbMessages = new System.Windows.Forms.RichTextBox();
             this.dgvInventory = new System.Windows.Forms.DataGridView();
             this.dgvQuests = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).BeginInit();
@@ -132,23 +132,23 @@ namespace SuperAdventure
             this.label5.TabIndex = 8;
             this.label5.Text = "Select Action";
             // 
-            // comboBox1
+            // cboWeapons
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(369, 559);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 9;
-            this.comboBox1.Text = "cboWeapons";
+            this.cboWeapons.FormattingEnabled = true;
+            this.cboWeapons.Location = new System.Drawing.Point(369, 559);
+            this.cboWeapons.Name = "cboWeapons";
+            this.cboWeapons.Size = new System.Drawing.Size(121, 21);
+            this.cboWeapons.TabIndex = 9;
+            this.cboWeapons.Text = "cboWeapons";
             // 
-            // comboBox2
+            // cboPotions
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(369, 593);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 10;
-            this.comboBox2.Text = "cboPotions";
+            this.cboPotions.FormattingEnabled = true;
+            this.cboPotions.Location = new System.Drawing.Point(369, 593);
+            this.cboPotions.Name = "cboPotions";
+            this.cboPotions.Size = new System.Drawing.Size(121, 21);
+            this.cboPotions.TabIndex = 10;
+            this.cboPotions.Text = "cboPotions";
             // 
             // btnNorth
             // 
@@ -210,23 +210,23 @@ namespace SuperAdventure
             this.btnUsePotion.UseVisualStyleBackColor = true;
             this.btnUsePotion.Click += new System.EventHandler(this.btnUsePotion_Click);
             // 
-            // richTextBox1
+            // rtbLocation
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(347, 19);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(360, 105);
-            this.richTextBox1.TabIndex = 24;
-            this.richTextBox1.Text = "";
+            this.rtbLocation.Location = new System.Drawing.Point(347, 19);
+            this.rtbLocation.Name = "rtbLocation";
+            this.rtbLocation.ReadOnly = true;
+            this.rtbLocation.Size = new System.Drawing.Size(360, 105);
+            this.rtbLocation.TabIndex = 24;
+            this.rtbLocation.Text = "";
             // 
-            // richTextBox2
+            // rtbMessages
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(347, 130);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(360, 286);
-            this.richTextBox2.TabIndex = 25;
-            this.richTextBox2.Text = "";
+            this.rtbMessages.Location = new System.Drawing.Point(347, 130);
+            this.rtbMessages.Name = "rtbMessages";
+            this.rtbMessages.ReadOnly = true;
+            this.rtbMessages.Size = new System.Drawing.Size(360, 286);
+            this.rtbMessages.TabIndex = 25;
+            this.rtbMessages.Text = "";
             // 
             // dgvInventory
             // 
@@ -267,16 +267,16 @@ namespace SuperAdventure
             this.ClientSize = new System.Drawing.Size(719, 651);
             this.Controls.Add(this.dgvQuests);
             this.Controls.Add(this.dgvInventory);
-            this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.rtbMessages);
+            this.Controls.Add(this.rtbLocation);
             this.Controls.Add(this.btnUsePotion);
             this.Controls.Add(this.btnUseWeapon);
             this.Controls.Add(this.btnSouth);
             this.Controls.Add(this.btnEast);
             this.Controls.Add(this.btnWest);
             this.Controls.Add(this.btnNorth);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboPotions);
+            this.Controls.Add(this.cboWeapons);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblLevel);
             this.Controls.Add(this.lblExperience);
@@ -288,7 +288,7 @@ namespace SuperAdventure
             this.Controls.Add(this.label1);
             this.Name = "SuperAdventure";
             this.Text = "My Game";
-            this.Load += new System.EventHandler(this.SuperAdventure_Load);
+            //this.Load += new System.EventHandler(this.SuperAdventure_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuests)).EndInit();
             this.ResumeLayout(false);
@@ -307,16 +307,16 @@ namespace SuperAdventure
         private System.Windows.Forms.Label lblExperience;
         private System.Windows.Forms.Label lblLevel;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cboWeapons;
+        private System.Windows.Forms.ComboBox cboPotions;
         private System.Windows.Forms.Button btnNorth;
         private System.Windows.Forms.Button btnWest;
         private System.Windows.Forms.Button btnEast;
         private System.Windows.Forms.Button btnSouth;
         private System.Windows.Forms.Button btnUseWeapon;
         private System.Windows.Forms.Button btnUsePotion;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox rtbLocation;
+        private System.Windows.Forms.RichTextBox rtbMessages;
         private System.Windows.Forms.DataGridView dgvInventory;
         private System.Windows.Forms.DataGridView dgvQuests;
     }
