@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using Engine;
 
 namespace SuperAdventure
@@ -84,21 +83,8 @@ namespace SuperAdventure
             if (newLocation.QuestAvailableHere != null)
             {
                 // See if the player already has the quest, and if they've completed it
-                bool playerAlreadyHasQuest = false;
-                bool playerAlreadyCompletedQuest = false;
-
-                foreach (PlayerQuest playerQuest in _player.Quests)
-                {
-                    if (playerQuest.Details.ID == newLocation.QuestAvailableHere.ID)
-                    {
-                        playerAlreadyHasQuest = true;
-
-                        if (playerQuest.IsCompleted)
-                        {
-                            playerAlreadyCompletedQuest = true;
-                        }
-                    }
-                }
+                bool playerAlreadyHasQuest = _player.HasThisQuest(newLocation.QuestAvailableHere);
+                bool playerAlreadyCompletedQuest = _player.CompletedThisQuest(newLocation.QuestAvailableHere);
 
                 // See if the player already has the quest
                 if (playerAlreadyHasQuest)
@@ -107,44 +93,7 @@ namespace SuperAdventure
                     if (!playerAlreadyCompletedQuest)
                     {
                         // See if the player has all the items needed to complete the quest
-                        bool playerHasAllItemsToCompleteQuest = true;
-
-                        foreach (QuestCompletionItem qci in newLocation.QuestAvailableHere.QuestCompletionItems)
-                        {
-                            bool foundItemInPlayersInventory = false;
-
-                            // Check each item in the player's inventory, to see if they have it, and enough of it
-                            foreach (InventoryItem ii in _player.Inventory)
-                            {
-                                // The player has this item in their inventory
-                                if (ii.Details.ID == qci.Details.ID)
-                                {
-                                    foundItemInPlayersInventory = true;
-
-                                    if (ii.Quantity < qci.Quantity)
-                                    {
-                                        // The player does not have enough of this item to complete the quest
-                                        playerHasAllItemsToCompleteQuest = false;
-
-                                        // There is no reason to continue checking for the other quest completion items
-                                        break;
-                                    }
-
-                                    // We found the item, so don't check the rest of the player's inventory
-                                    break;
-                                }
-                            }
-
-                            // If we didn't find the required item, set our variable and stop looking for other items
-                            if (!foundItemInPlayersInventory)
-                            {
-                                // The player does not have this item in their inventory
-                                playerHasAllItemsToCompleteQuest = false;
-
-                                // There is no reason to continue checking for the other quest completion items
-                                break;
-                            }
-                        }
+                        bool playerHasAllItemsToCompleteQuest = _player.HasAllQuestCompletionItems(newLocation.QuestAvailableHere);
 
                         // The player has all items required to complete the quest
                         if (playerHasAllItemsToCompleteQuest)
